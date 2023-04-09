@@ -2,13 +2,16 @@ package ar.unrn.eje3;
 
 import java.util.List;
 
-public class ReporteDeGastos {
-
+public class FakeReporteDeGastos {
 	private Fecha helpDate;
+	private int reporteGastoDeComida;
+	private int reporteTotal;
 
-	public ReporteDeGastos(Fecha helpDate) {
+	public FakeReporteDeGastos(Fecha helpDate) {
 		super();
 		this.helpDate = helpDate;
+		this.reporteGastoDeComida = 0;
+		this.reporteTotal = 0;
 	}
 
 	public StringBuffer imprimir(List<Gasto> gastos) {
@@ -31,9 +34,15 @@ public class ReporteDeGastos {
 
 		}
 
+		reporteGastoDeComida = gastosDeComida;
+		reporteTotal = total;
 		reporte.append("Gastos de comida: " + gastosDeComida + '\n');
 		reporte.append("Total de gastos: " + total + '\n');
 
 		return reporte;
+	}
+
+	int gastoDeComida() {
+		return reporteGastoDeComida;
 	}
 }
