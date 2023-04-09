@@ -12,19 +12,6 @@ public class Recaudacion {
 
 		// aplique la regla FIRST CLASS COLLECTIONS para csvData
 
-//		List<String[]> csvData = new ArrayList<String[]>();
-//		CSVReader reader = new CSVReader(new FileReader("data.csv"));
-//		String[] row = null;
-//		
-
-//
-//		while ((row = reader.readNext()) != null) {
-//			csvData.add(row);
-//		}
-//
-//		reader.close();
-//		csvData.remove(0);
-
 		CSVData csvData = new CSVData("data.csv");
 
 		if (options.containsKey("company_name")) {
@@ -41,23 +28,23 @@ public class Recaudacion {
 //					List<String[]> csvDatos) -> csvDatos.get(indice)[1].equals(opciones.get("company_name"))), options,
 //					csvData);
 
-			csvData = new CSVData(filtro(
+			csvData = new CSVData(filtroKey(
 					(int indice, CSVData csvDatos) -> csvDatos.get(indice, 1).equals(options.get("company_name")),
 					csvData));
 		}
 
 		if (options.containsKey("city")) {
-			csvData = new CSVData(filtro(
+			csvData = new CSVData(filtroKey(
 					(int indice, CSVData csvDatos) -> csvDatos.get(indice, 4).equals(options.get("city")), csvData));
 		}
 
 		if (options.containsKey("state")) {
-			csvData = new CSVData(filtro(
+			csvData = new CSVData(filtroKey(
 					(int indice, CSVData csvDatos) -> csvDatos.get(indice, 5).equals(options.get("state")), csvData));
 		}
 
 		if (options.containsKey("round")) {
-			csvData = new CSVData(filtro(
+			csvData = new CSVData(filtroKey(
 					(int indice, CSVData csvDatos) -> csvDatos.get(indice, 9).equals(options.get("round")), csvData));
 		}
 
@@ -85,37 +72,22 @@ public class Recaudacion {
 		return output;
 	}
 
-	private static List<String[]> filtro(Condicion condicion, CSVData csvData) {
+	private static List<String[]> filtroKey(Condicion condicion, CSVData csvData) {
 
 		List<String[]> results = new ArrayList<String[]>();
 
 		for (int i = 0; i < csvData.size(); i++) {
 			// extract method
-			aplicaAlFiltro(condicion, csvData, results, i);
+			aplicarAlFiltro(condicion, csvData, results, i);
 		}
 		return results;
 	}
 
-	private static void aplicaAlFiltro(Condicion condicion, CSVData csvData, List<String[]> results, int indice) {
+	private static void aplicarAlFiltro(Condicion condicion, CSVData csvData, List<String[]> results, int indice) {
 
 		// implementacion de lambda
 		if (condicion.condicion(indice, csvData)) {
 			results.add(csvData.agregar(indice));
 		}
 	}
-
-//  public static void main(String[] args) {
-//    try {
-//      Map<String, String> options = new HashMap<String, String>();
-//      options.put("company_name", "Facebook");
-//      options.put("round", "a");
-//      System.out.print(Recaudacion.where(options).size());
-//    } catch (IOException e) {
-//      System.out.print(e.getMessage());
-//      System.out.print("error");
-//    }
-//  }
 }
-
-//class NoSuchEntryException extends Exception {
-//}
