@@ -1,27 +1,37 @@
 package ar.unrn.eje4;
 
+import java.util.List;
+
 import org.jdbi.v3.core.Jdbi;
 
 public class Main {
 
-  public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    Jdbi jdbi = Jdbi.create("jdbc:hsqldb:mem;create=true");
+		Jdbi jdbi = Jdbi.create("jdbc:hsqldb:mem;create=true");
 
-    new SetUpDatabase(jdbi).setUp();
+		new SetUpDatabase(jdbi).setUp();
 
-    var repo = new PersonaRepository(jdbi);
-    var personas = repo.buscarPorNombre("Vla");
+		try {
+			var repo = new PersonaRepository(jdbi);
 
-    if (personas != null) {
-      for (Persona persona : personas) {
-        System.out.println(persona.nombre() + " " + persona.apellido());
-      }
-    }
+			var personas = repo.buscarPorNombre("Vla");
 
-    var persona = repo.buscarId(1L);
-    if (persona != null) {
-      System.out.println(persona.nombre() + " " + persona.apellido());
-    }
-  }
+			imprimir(personas);
+
+			var persona = repo.buscarId(1L);
+
+			System.out.println(persona.nombre() + " " + persona.apellido());
+
+		} catch (PersonaRepositoryExceptions e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	private static void imprimir(List<Persona> personas) {
+		for (Persona persona : personas) {
+			System.out.println(persona.nombre() + " " + persona.apellido());
+		}
+	}
 }
