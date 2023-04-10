@@ -45,4 +45,8 @@ public class FakeReporteDeGastos {
 	int gastoDeComida() {
 		return reporteGastoDeComida;
 	}
+
+	int total() {
+		return reporteTotal;
+	}
 }
