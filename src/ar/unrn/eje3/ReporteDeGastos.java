@@ -19,12 +19,9 @@ public class ReporteDeGastos {
 		reporte.append("Expenses " + helpDate.now() + '\n');
 
 		for (Gasto gasto : gastos) {
-			if (gasto.Cena() || gasto.Desayuno()) {
-				gastosDeComida += gasto.monto();
-			}
+			gastosDeComida += gasto.comida();
 
-			String marcaExcesoComidas = (gasto.Cena() && gasto.monto() > 5000
-					|| gasto.Desayuno() && gasto.monto() > 1000) ? "X" : " ";
+			String marcaExcesoComidas = (gasto.exceso()) ? "X" : " ";
 
 			reporte.append(gasto.nombre() + "\t" + gasto.monto() + "\t" + marcaExcesoComidas + '\n');
 			total += gasto.monto();

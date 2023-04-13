@@ -4,6 +4,8 @@ public interface CodigoPrecio {
 
 	double calcularCosto(int diasAlquilados);
 
-	boolean nuevoLanzamiento();
+//	boolean nuevoLanzamiento();
+
+	int puntosPorNuevoLanzamiento(int diasAlquilados);
 
 }

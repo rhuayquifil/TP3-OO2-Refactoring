@@ -8,5 +8,7 @@ public interface Condicion {
 
 //	boolean condicion(Map<String, String> options, int indice, CSVData csvData) throws NullPointerException;
 
-	boolean condicion(int indice, CSVData csvData) throws NullPointerException;
+//	boolean condicion(int indice, CSVData csvData) throws NullPointerException;
+
+	boolean condicion(int indice) throws NullPointerException;
 }

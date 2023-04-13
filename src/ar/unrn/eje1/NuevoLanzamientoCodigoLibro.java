@@ -14,8 +14,11 @@ public class NuevoLanzamientoCodigoLibro implements CodigoPrecio {
 	}
 
 	@Override
-	public boolean nuevoLanzamiento() {
-		return true;
+	public int puntosPorNuevoLanzamiento(int diasAlquilados) {
+		if (diasAlquilados > 1) {
+			return 1;
+		}
+		return 0;
 	}
 
 }

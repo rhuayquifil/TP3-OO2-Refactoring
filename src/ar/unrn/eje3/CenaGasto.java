@@ -11,22 +11,17 @@ public class CenaGasto extends Gasto {
 	}
 
 	@Override
-	public boolean Cena() {
-		return true;
-	}
-
-	@Override
-	public boolean Desayuno() {
-		return false;
-	}
-
-	@Override
-	public boolean AlquilerAuto() {
-		return false;
-	}
-
-	@Override
 	public String nombre() {
 		return String.valueOf(TipoDeGasto.CENA);
+	}
+
+	@Override
+	public boolean exceso() {
+		return super.monto() > 5000;
+	}
+
+	@Override
+	public int comida() {
+		return super.monto();
 	}
 }

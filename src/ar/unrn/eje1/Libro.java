@@ -25,7 +25,11 @@ public class Libro {
 		return codigoPrecio.calcularCosto(diasAlquilados);
 	}
 
-	public boolean nuevoLanzamiento() {
-		return codigoPrecio.nuevoLanzamiento();
+//	public boolean nuevoLanzamiento() {
+//		return codigoPrecio.nuevoLanzamiento();
+//	}
+
+	public int puntosPorNuevoLanzamiento(int diasAlquilados) {
+		return codigoPrecio.puntosPorNuevoLanzamiento(diasAlquilados);
 	}
 }

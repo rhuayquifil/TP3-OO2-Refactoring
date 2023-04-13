@@ -31,7 +31,8 @@ public class Alquileres {
 			puntosAlquilerFrecuente++;
 
 			// aplique extract method
-			puntosAlquilerFrecuente += bonusPorDosDíasDeAlquilerDeUnNuevoLanzamiento(alquiler);
+//			puntosAlquilerFrecuente += bonusPorDosDíasDeAlquilerDeUnNuevoLanzamiento(alquiler);
+			puntosAlquilerFrecuente += alquiler.puntosPorNuevoLanzamiento();
 
 		}
 
@@ -39,13 +40,5 @@ public class Alquileres {
 		resultado[1] = puntosAlquilerFrecuente;
 
 		return resultado;
-	}
-
-	private int bonusPorDosDíasDeAlquilerDeUnNuevoLanzamiento(Alquiler alquiler) {
-		// aplique Tell, Don't Ask para saber si era de lanzamiento y dias alquilados
-		if ((alquiler.nuevoLanzamiento()) && alquiler.diasAlquilados() > 1) {
-			return 1;
-		}
-		return 0;
 	}
 }

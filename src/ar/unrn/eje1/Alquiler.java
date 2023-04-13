@@ -21,7 +21,11 @@ public class Alquiler {
 		return this.copia.calcularMontoAlquiler(diasAlquilados);
 	}
 
-	public boolean nuevoLanzamiento() {
-		return this.copia.libroNuevoLanzamiento();
+//	public boolean nuevoLanzamiento() {
+//		return this.copia.libroNuevoLanzamiento();
+//	}
+
+	public int puntosPorNuevoLanzamiento() {
+		return this.copia.puntosPorNuevoLanzamiento(diasAlquilados);
 	}
 }

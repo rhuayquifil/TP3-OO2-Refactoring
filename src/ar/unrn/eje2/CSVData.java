@@ -32,6 +32,26 @@ public class CSVData {
 		csvData = filtro;
 	}
 
+	public void filtroKey(Condicion condicion) {
+
+		List<String[]> results = new ArrayList<String[]>();
+
+		for (int i = 0; i < csvData.size(); i++) {
+			// extract method
+			aplicarAlFiltro(condicion, results, i);
+		}
+
+		csvData = results;
+	}
+
+	private static void aplicarAlFiltro(Condicion condicion, List<String[]> results, int indice) {
+
+		// implementacion de lambda
+		if (condicion.condicion(indice)) {
+//			results.add(csvData.get(indice));
+		}
+	}
+
 	public String get(int indice, int columna) {
 		return csvData.get(indice)[columna];
 	}

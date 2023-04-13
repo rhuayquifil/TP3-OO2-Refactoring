@@ -18,8 +18,7 @@ public class RegularesCodigoPrecio implements CodigoPrecio {
 	}
 
 	@Override
-	public boolean nuevoLanzamiento() {
-		return false;
+	public int puntosPorNuevoLanzamiento(int diasAlquilados) {
+		return 0;
 	}
-
 }

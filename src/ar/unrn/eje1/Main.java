@@ -1,14 +1,5 @@
 package ar.unrn.eje1;
 
-import ar.unrn.eje1.Alquiler;
-import ar.unrn.eje1.Cliente;
-import ar.unrn.eje1.CodigoPrecio;
-import ar.unrn.eje1.CopiaLibro;
-import ar.unrn.eje1.InfantilesCodigoPrecio;
-import ar.unrn.eje1.Libro;
-import ar.unrn.eje1.NuevoLanzamientoCodigoLibro;
-import ar.unrn.eje1.RegularesCodigoPrecio;
-
 public class Main {
 	public static void main(String args[]) {
 
@@ -16,8 +7,8 @@ public class Main {
 		CodigoPrecio infantiles = new InfantilesCodigoPrecio();
 		CodigoPrecio nuevoLanzamiento = new NuevoLanzamientoCodigoLibro();
 
-		Libro elTunel = new Libro("El Túnel", regulares);
-		Libro antesDelFin = new Libro("Antes del Fin", regulares);
+		Libro elTunel = new Libro("El Túnel", nuevoLanzamiento);
+		Libro antesDelFin = new Libro("Antes del Fin", infantiles);
 		CopiaLibro elTunelCopia = new CopiaLibro(elTunel);
 		CopiaLibro antesDelFinCopia = new CopiaLibro(antesDelFin);
 		Alquiler alquilerElTunel = new Alquiler(elTunelCopia, 5);

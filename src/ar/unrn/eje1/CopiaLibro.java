@@ -15,7 +15,11 @@ public class CopiaLibro {
 		return libro.calcularMontoAlquiler(diasAlquilados);
 	}
 
-	public boolean libroNuevoLanzamiento() {
-		return libro.nuevoLanzamiento();
+//	public boolean libroNuevoLanzamiento() {
+//		return libro.nuevoLanzamiento();
+//	}
+
+	public int puntosPorNuevoLanzamiento(int diasAlquilados) {
+		return libro.puntosPorNuevoLanzamiento(diasAlquilados);
 	}
 }

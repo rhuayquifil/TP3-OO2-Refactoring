@@ -16,11 +16,9 @@ public abstract class Gasto {
 		return monto;
 	}
 
-	public abstract boolean Cena();
-
-	public abstract boolean Desayuno();
-
-	public abstract boolean AlquilerAuto();
-
 	public abstract String nombre();
+
+	public abstract boolean exceso();
+
+	public abstract int comida();
 }
