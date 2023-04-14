@@ -31,17 +31,12 @@ public class CSVData {
 		csvData.remove(0);
 	}
 
-	public CSVData(List<String[]> filtro) {
-		csvData = filtro;
-	}
-
 	public void filtroKey(String key, int columna) {
 
 		List<String[]> results = new ArrayList<String[]>();
 
 		for (int i = 0; i < csvData.size(); i++) {
 			// extract method
-//			aplicarAlFiltro(key, results, i);
 			aplicarAlFiltro((int indice) -> csvData.get(indice)[columna].equals(key), results, i);
 
 		}
@@ -77,9 +72,5 @@ public class CSVData {
 			output.add(mapped);
 		}
 		return output;
-	}
-
-	public int size() {
-		return csvData.size();
 	}
 }
