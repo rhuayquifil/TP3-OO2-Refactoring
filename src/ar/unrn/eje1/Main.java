@@ -7,15 +7,15 @@ public class Main {
 		CodigoPrecio infantiles = new InfantilesCodigoPrecio();
 		CodigoPrecio nuevoLanzamiento = new NuevoLanzamientoCodigoLibro();
 
-		Libro elTunel = new Libro("El Túnel", nuevoLanzamiento);
-		Libro antesDelFin = new Libro("Antes del Fin", infantiles);
+		Libro elTunel = new Libro("El Túnel", infantiles);
+//		Libro antesDelFin = new Libro("Antes del Fin", nuevoLanzamiento);
 		CopiaLibro elTunelCopia = new CopiaLibro(elTunel);
-		CopiaLibro antesDelFinCopia = new CopiaLibro(antesDelFin);
+//		CopiaLibro antesDelFinCopia = new CopiaLibro(antesDelFin);
 		Alquiler alquilerElTunel = new Alquiler(elTunelCopia, 5);
-		Alquiler alquilerAntesDelFin = new Alquiler(antesDelFinCopia, 3);
+//		Alquiler alquilerAntesDelFin = new Alquiler(antesDelFinCopia, 3);
 		Cliente yo = new Cliente("Javier");
 		yo.alquilar(alquilerElTunel);
-		yo.alquilar(alquilerAntesDelFin);
+//		yo.alquilar(alquilerAntesDelFin);
 		Object[] resultado = yo.calcularDeudaYPuntosObtenidos();
 		System.out.println(resultado[0]);
 		System.out.println(resultado[1]);

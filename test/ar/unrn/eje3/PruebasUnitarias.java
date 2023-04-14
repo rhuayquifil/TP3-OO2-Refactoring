@@ -1,6 +1,6 @@
 package ar.unrn.eje3;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,18 @@ class PruebasUnitarias {
 		List<Gasto> gastos = new ArrayList<Gasto>();
 		gastos.add(primerGasto);
 
-		FakeReporteDeGastos reporte = new FakeReporteDeGastos(new HelpDate());
+		ReporteDeGastos reporte = new ReporteDeGastos(new HelpDate());
+
+		StringBuffer esperado = new StringBuffer();
+		HelpDate helpDate = new HelpDate();
+		esperado.append("Expenses " + helpDate.now() + '\n');
+		esperado.append("CENA" + "\t" + 1000 + "\t" + " " + '\n');
+		esperado.append("Gastos de comida: " + 1000 + '\n');
+		esperado.append("Total de gastos: " + 1000 + '\n');
+
 		StringBuffer resultado = reporte.imprimir(gastos);
-		assertEquals(1000, reporte.gastoDeComida());
-		assertEquals(1000, reporte.total());
+
+		assertEquals(esperado.toString(), resultado.toString());
 	}
 
 	@Test
@@ -31,16 +39,25 @@ class PruebasUnitarias {
 		gastos.add(primerGasto);
 		gastos.add(segundoGasto);
 
-		FakeReporteDeGastos reporte = new FakeReporteDeGastos(new HelpDate());
+		ReporteDeGastos reporte = new ReporteDeGastos(new HelpDate());
+
+		StringBuffer esperado = new StringBuffer();
+		HelpDate helpDate = new HelpDate();
+		esperado.append("Expenses " + helpDate.now() + '\n');
+		esperado.append("DESAYUNO" + "\t" + 600 + "\t" + " " + '\n');
+		esperado.append("ALQUILER_AUTO" + "\t" + 1000 + "\t" + " " + '\n');
+		esperado.append("Gastos de comida: " + 600 + '\n');
+		esperado.append("Total de gastos: " + 1600 + '\n');
+
 		StringBuffer resultado = reporte.imprimir(gastos);
-		assertEquals(600, reporte.gastoDeComida());
-		assertEquals(1600, reporte.total());
+
+		assertEquals(esperado.toString(), resultado.toString());
 	}
 
 	@Test
 	void reporteDeDosDesayunoyDosCena() {
 		Gasto primerGasto = new CenaGasto(1500);
-		Gasto segundoGasto = new CenaGasto(2000);
+		Gasto segundoGasto = new CenaGasto(8000);
 		Gasto tercerGasto = new DesayunoGasto(800);
 		Gasto cuartoGasto = new DesayunoGasto(500);
 
@@ -50,8 +67,20 @@ class PruebasUnitarias {
 		gastos.add(tercerGasto);
 		gastos.add(cuartoGasto);
 
-		FakeReporteDeGastos reporte = new FakeReporteDeGastos(new HelpDate());
+		ReporteDeGastos reporte = new ReporteDeGastos(new HelpDate());
+
+		StringBuffer esperado = new StringBuffer();
+		HelpDate helpDate = new HelpDate();
+		esperado.append("Expenses " + helpDate.now() + '\n');
+		esperado.append("CENA" + "\t" + 1500 + "\t" + " " + '\n');
+		esperado.append("CENA" + "\t" + 8000 + "\t" + "X" + '\n');
+		esperado.append("DESAYUNO" + "\t" + 800 + "\t" + " " + '\n');
+		esperado.append("DESAYUNO" + "\t" + 500 + "\t" + " " + '\n');
+		esperado.append("Gastos de comida: " + 10800 + '\n');
+		esperado.append("Total de gastos: " + 10800 + '\n');
+
 		StringBuffer resultado = reporte.imprimir(gastos);
-		assertEquals(4800, reporte.gastoDeComida());
+
+		assertEquals(esperado.toString(), resultado.toString());
 	}
 }
